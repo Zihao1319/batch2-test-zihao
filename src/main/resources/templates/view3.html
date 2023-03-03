@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Invoice</title>
+  </head>
+  <body>
+    <div data-th-object="${quotation}">
+      <div>
+        <h1>Invoice</h1>
+      </div>
+      <br />
+      <div>
+        <label for="invoiceId">Invoice Id:</label>
+        <span data-th-text="${quotation.quoteId}"></span>
+      </div>
+      <br />
+    </div>
+    <div data-th-object="${customer}">
+      <div>
+        <label for="name">Name:</label>
+        <span data-th-text="${customer.custName}"></span>
+      </div>
+      <br />
+      <div>
+        <label for="address">Address:</label>
+        <span data-th-text="${customer.address}"></span>
+      </div>
+      <br />
+      <div>
+        <label for="total">Total:</label>
+        <span data-th-text="${customer.totalCost}"></span>
+      </div>
+      <br />
+    </div>
+  </body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>View 1</title>
+  </head>
+  <body>
+    <!--
+			Feel free to make changes to this HTML but do no change the option in select
+		-->
+
+    <h1>Shopping Cart</h1>
+    <form
+      data-th-action="@{/shippingaddress}"
+      method="post"
+      data-th-object="${item}"
+    >
+      <table>
+        <tr>
+          <td>Item:</td>
+          <td>
+            <select data-th-field="*{name}">
+              <option th:value="apple">Apple</option>
+              <option th:value="orange">Orange</option>
+              <option th:value="bread">Bread</option>
+              <option th:value="cheese">Cheese</option>
+              <option th:value="chicken">Chicken</option>
+              <option th:value="mineral_water">Mineral Water</option>
+              <option th:value="instant_noodles">Instant Noodles</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>Quantity:</td>
+          <td>
+            <input
+              data-th-field="*{quantity}"
+              type="number"
+              size="4"
+              placeholder="Quantity"
+              name="quantity"
+              min="1"
+            />
+            <span
+              class="error"
+              data-th-if="${#fields.hasErrors('quantity')}"
+              data-th-errors="${item.quantity}"
+            ></span>
+          </td>
+        </tr>
+      </table>
+
+      <div>
+        <button type="submit" formaction="/">Add</button>
+        <button type="submit" formaction="/shippingaddress">Next</button>
+      </div>
+    </form>
+    <table
+      border="1"
+      style="margin-top: 2vh; margin-bottom: 2vh"
+      th:if="${not #maps.isEmpty(cart.itemList)}"
+    >
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Quantity</th>
+        </tr>
+      </thead>
+      <tbody data-th-object="${cart}">
+        <tr th:each="i : ${cart.itemList}">
+          <td><span th:text="${i.key}"></span></td>
+          <td><span th:text="${i.value}"></span></td>
+        </tr>
+        <span
+          class="error"
+          data-th-if="${#fields.hasErrors('itemList')}"
+          data-th-errors="*{cart.itemList}"
+        ></span>
+      </tbody>
+    </table>
+    <div th:if="${#maps.isEmpty(cart.itemList)}">
+      Your cart is currently empty
+    </div>
+  </body>
+</html>
