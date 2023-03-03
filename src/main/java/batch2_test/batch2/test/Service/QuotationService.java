@@ -100,9 +100,7 @@ public class QuotationService {
         for (String item : itemList.keySet()) {
 
             if (quotations.containsKey(item)) {
-                // System.out.println(item);
-                // System.out.println(itemList.get(item));
-                // System.out.println(quotations.get(item));
+
                 totalCost += itemList.get(item) * quotations.get(item);
             }
         }

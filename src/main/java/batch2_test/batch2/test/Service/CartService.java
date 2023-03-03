@@ -26,9 +26,10 @@ public class CartService {
             System.out.println(itemList.get(currItem));
             System.out.println(item.getQuantity());
             itemList.put(currItem, itemList.get(currItem) + item.getQuantity());
+            return itemList;
         }
+        
         itemList.put(currItem, item.getQuantity());
-
         return itemList;
     }
 

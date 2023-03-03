@@ -38,7 +38,6 @@ public class PurchaseOrderController {
         Cart cart = (Cart) session.getAttribute("cart");
 
         if (null == cart) {
-            System.out.println("true");
             cart = new Cart();
             session.setAttribute("cart", cart);
         }
@@ -53,7 +52,6 @@ public class PurchaseOrderController {
             BindingResult binding, HttpSession session, Model model) throws NullPointerException {
 
         if (binding.hasErrors()) {
-            System.out.println("error");
             return "redirect:/";
         }
 
